@@ -1,0 +1,61 @@
+default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - sensor.yr_symbol
+      - sun.sun
+      - binary_sensor.sump_water_tracker
+      - sensor.sump_distance
+#      - sensor.sump_water_lvl
+      - sensor.sump_water_level
+#      - sensor.alarm_heartbeat
+      - binary_sensor.water_leak_sensor_158d0001bbab0e
+      - !secret google_maps_tracker_nuno
+      - !secret google_maps_tracker_marisa
+      - group.temperature
+      - group.cameras 
+      - group.all_lights
+      - group.all_locks
+      - group.all_remotes
+      - group.all_switches
+      - media_player.mediaroom_stb
+
+temperature:
+  name: Temperatura e humidade
+  entities:
+    - sensor.temperature_158d0001c2a59f
+    - sensor.humidity_158d0001c2a59f
+    - sensor.hall_room_temp_humidity
+    - sensor.hall_room_temp_temperature
+    - sensor.hall_room_temp_battery
+    - sensor.temperature_158d0002272e7d
+    - sensor.humidity_158d0002272e7d
+    - sensor.pressure_158d0002272e7d
+    - light.gateway_light_7811dcb238c1
+
+cameras:
+  name: Cameras
+  entities:
+    - camera.outside_camera
+    - camera.basement_camera
+    - camera.hall_camera
+
+presence:
+  view: yes
+  name: Presence
+#  icon: mdi:account-multiple
+  entities:    
+    - group.all_devices
+
+automations:
+  view: yes
+  name: Automations2
+  entities:
+#    - group.all_automations
+    - automation.sump_pump_automation
+
+sensors:
+  view: yes
+  name: Sensors
+  entities:
+    - group.all_automations

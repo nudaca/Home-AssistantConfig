@@ -1,0 +1,52 @@
+- id: sump_pump_automation
+  alias: Sump Water Detected
+  trigger:
+  - platform: time_pattern
+    seconds: '15'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.sump_water_tracker
+    state: 'on'
+  action:
+  - data_template:
+      message: HASS - Water was detected in the sump pump room at "{{now().strftime("%H:%M:%S
+        %Y-%m-%d")}}". The distance is {{ states.sensor.sump_distance.state }} cm
+      title: 'HASS - DANGER: Sump Pump Detected Water @  "{{now().strftime("%H:%M:%S
+        %m-%d")}}"'
+    service: notify.pushbullet
+  - entity_id: script.sump_water_notify_rate_limit
+    service: homeassistant.turn_on
+- id: marisa_notification
+  alias: Notify Marisa at Home
+  trigger:
+  - platform: state
+    entity_id: device_tracker.google_maps_108026733324779423374
+    from: not_home
+    to: home
+  condition:
+    condition: state
+    entity_id: device_tracker.google_maps_102703057112445366043
+    state: not_home
+  action:
+  - service: notify.telegram
+    data:
+      title: Send an images
+      message: That's an example that sends an image.
+      data:
+        photo:
+        - url: http://192.168.1.67:99/snapshot.cgi
+          username: ndc
+          password: refak12m
+- id: arduino_is_dead
+  alias: Notify if Arduino sensor state unchanged
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  condition:
+    condition: template
+    value_template: '{{ (as_timestamp(now())-as_timestamp(states.sensor.sump_distance.last_updated))
+      | int > 300 }}'
+  action:
+    service: notify.pushbullet
+    data:
+      message: Arduino sensor state unchanged in the last 5 minutes.

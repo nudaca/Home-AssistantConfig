@@ -1,0 +1,17 @@
+#   sump_notify_rate_limit:
+#     alias: Rate Limit Sump Pump Notifications
+#     sequence:
+#       - service: homeassistant.turn_off
+#         entity_id: automation.sump_running
+#       - delay: '00:01:00'
+#       - service: homeassistant.turn_on
+#         entity_id: automation.sump_running
+   
+   sump_water_notify_rate_limit:
+     alias: Rate Limit Sump Pump Water Detect Notifications
+     sequence:
+       - service: homeassistant.turn_off
+         entity_id: automation.sump_water_detected
+       - delay: '00:15:00'
+       - service: homeassistant.turn_on
+         entity_id: automation.sump_water_detected

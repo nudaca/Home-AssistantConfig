@@ -1,0 +1,45 @@
+sensor.temperature_158d0002272e7d:
+  friendly_name: Temp fora
+sensor.humidity_158d0002272e7d:
+  friendly_name: Humi fora
+  icon: mdi:water-percent
+sensor.pressure_158d0002272e7d:
+  friendly_name: Press fora
+sensor.temperature_158d0001c2a59f:
+  friendly_name: Temp Quarto miudas
+sensor.humidity_158d0001c2a59f:
+  friendly_name: Humi Quarto miudas
+  icon: mdi:water-percent
+sensor.temperature_monitor:
+  friendly_name: Temp Hall
+  icon: mdi:thermometer
+sensor.humidity_monitor:
+  friendly_name: Humi Hall
+  icon: mdi:water-percent
+light.gateway_light_7811dcb238c1:
+  friendly_name: Luz da Gateway
+binary_sensor.water_leak_sensor_158d0001bbab0e:
+  friendly_name: Detetor Agua
+group.all_automations:
+  hidden: false
+  friendly_name: Automations
+group.all_scripts:
+  hidden: false
+  friendly_name: Scripts
+group.all_devices:
+  friendly_name: Devices
+  hidden: false
+group.all_lights:
+  friendly_name: Lights
+  hidden: true
+group.all_locks:
+  hidden: false
+group.all_remotes:
+  hidden: false
+group.all_sensors:
+  hidden: false
+group.all_switches:
+  hidden: false
+group.automations: {}
+device_tracker.td50002197lan:
+  friendly_name: Portatil HPß
